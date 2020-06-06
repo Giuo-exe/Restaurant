@@ -1,8 +1,17 @@
 <?php
+session_start();
 include "connection.php";
 
 
-$sql = "SELECT * FROM pietanze p WHERE p.nome LIKE '%".$_POST["search"]."%'";
+echo $_SESSION["vegano"];
+$check = $_SESSION["vegano"];
+echo $check;
+if($check == "si"){
+  echo "fai qualcosa maremma puttana";
+}
+$sql = ($check == "si") ? "SELECT * FROM pietanze p WHERE p.vegano=1 and p.nome LIKE '%".$_POST["search"]."%'" : "SELECT * FROM pietanze p WHERE p.nome LIKE '%".$_POST["search"]."%'";
+
+echo $sql;
 
 $conn=connect();
     $records=$conn->query($sql);

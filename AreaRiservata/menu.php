@@ -1,5 +1,9 @@
-<?php include "services/load.php" ?>
+<?php session_start();
+  include "services/load.php";
+  $_SESSION["vegano"] = "no";
+  ?>
 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -67,12 +71,16 @@
         $('#vegan').click(function(){
           if ($(this).is(':checked')) {
             $('#result').html("");
+            $('#ohfra').html("fram è si");
+            <?php echo setsessione("si"); ?>
+
             $('#result').html('<?php loadVegan(); ?>');
-            $('#ohfra').html("tabba dabba dooo");
           }else{
             $('#result').html("");
+            $('#ohfra').html("è no");
+            <?php echo setsessione("no"); ?>
+
             $('#result').html('<?php loadPietanze(); ?>');
-            $('#ohfra').html("Ciao iaushdio asd ");
           }
         });
       });
@@ -102,3 +110,11 @@
 
   </body>
 </html>
+
+<?php
+
+  function setsessione($cucu){
+      $_SESSION["vegano"] = $cucu;
+  }
+
+ ?>

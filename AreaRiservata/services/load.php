@@ -29,7 +29,7 @@ function loadPietanze(){
           }
           echo $risult;
         }else{
-          return "<h1>Non c'è niente da mostrare</h1>";
+          echo "<h1>Non c'è niente da mostrare</h1>";
         }
       }
     }
@@ -62,7 +62,7 @@ function loadPietanze(){
             }
             echo $risult;
           }else{
-            return "<h1>Non c'è niente da mostrare</h1>";
+            echo "<h1>Non c'è niente da mostrare</h1>";
           }
         }
 
