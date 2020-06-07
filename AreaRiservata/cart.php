@@ -18,10 +18,47 @@
      <style>@import "css/cart.css";</style>
    </head>
    <body>
-     <div class="carte">
-       <div class='carta'>
-         <img class='img_carta' src='img/pizza.jpg'/>
-         <p class='numero_carta'>x1</p>
+     <div class="contenitore">
+       <div class="carte">
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
+
+         <div class='carta'>
+           <img class='img_carta' src='img/pizza.jpg'/>
+           <p class='numero_carta'>x1</p>
+         </div>
        </div>
      </div>
    </body>
