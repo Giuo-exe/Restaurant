@@ -1,19 +1,23 @@
 <?php
-  class pietanza{
+  class ordinazione{
     private $nome="";
     private $descrizione="";
     private $tempo="";
     private $foto="";
     private $vegano=null;
     private $prezzo=null;
+    private $tavolo=null;
+    private $orario=null;
 
-    function __construct($nome,$descrizione,$tempo,$foto,$vegano,$prezzo){
+    function __construct($nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario){
        $this->nome = $nome;
        $this->descrizione = $descrizione;
        $this->tempo = $tempo;
        $this->foto = $foto;
        $this->vegano = $vegano;
        $this->prezzo = $prezzo;
+       $this->tavolo = $tavolo;
+       $this->orario = $orario;
     }
 
     function getNome(){
@@ -38,6 +42,14 @@
 
     function getPrezzo(){
       return $this->prezzo;
+    }
+
+    function getTavolo(){
+      return $this->tavolo;
+    }
+
+    function getOrario(){
+      return $this->orario;
     }
   }
 

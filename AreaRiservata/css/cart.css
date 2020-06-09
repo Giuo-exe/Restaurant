@@ -3,22 +3,32 @@
     font-family: selfdeception;
 }
 
-
-.contenitore{
+body{
   background-color: #F2E6D9;
-  width:100%;
-  height: 100%;
   justify-content: center;
 }
 
+.contenitore{
+  margin: 0 auto;
+  background-color: white;
+  max-width: 1140px;
+  min-width: 260px;
+  height: 100%;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  grid-template-row: repeat(auto-fill, 60px);
+  grid-template-areas: "carte"
+                        "footer";
+}
+
 .carte{
-    background-color: #F2E6D9;
+    padding: 30px;
+    grid-area: carte;
     margin: 0 auto;
-    max-width: 1500px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     gap: 20px;
-    padding-top: 30px;
 }
 
 
@@ -42,12 +52,26 @@
 }
 
 .numero_carta{
+  font-family: 'Open Sans', sans-serif;
   grid-row: 1;
   grid-column: 1;
   text-align: center;
   font-size: 50px;
   margin-top: 65px;
-  color: white;
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: white;
+}
+
+.footer{
+  height: 60px;
+  grid-area: footer;
+  text-align: center;
+}
+
+.sommario{
+  padding: 25px 0;
+  height: auto;
+  text-align: center;
 }
 
 #aggiungi{

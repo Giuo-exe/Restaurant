@@ -1,11 +1,12 @@
 <?php
 include "class_pietanza.php";
-function getPietanze(){
-  $sql = "SELECT * FROM pietanze";
+include "connection.php";
+function getPietanza($pietanza){
+  $sql = "SELECT * FROM pietanze p where p.nome='$pietanza'";
 
   $conn=connect();
       $records=$conn->query($sql);
-      $risult=[];
+      $risult=array();
       if ( $records == TRUE) {
           //echo "<br>Query eseguita!";
       } else {
@@ -13,7 +14,7 @@ function getPietanze(){
       }
       //gestisco gli eventuali dati estratti dalla query
       if($records->num_rows == 0){
-          return "<h2>Nessun risultato</h2>";
+          return null;
       }else{
         if($records){
           while($tupla=$records-> fetch_assoc()){
@@ -25,11 +26,10 @@ function getPietanze(){
             $prezzo = $tupla["prezzo"];
 
             $oggetto = new pietanza($nome,$descrizione,$tempo,$foto,$vegano,$prezzo);
-            $risult = $oggetto;
           }
-          return $risult;
+          return $oggetto;
         }else{
-          echo "<h1>Non c'è niente da mostrare</h1>";
+          return null;
         }
       }
     }

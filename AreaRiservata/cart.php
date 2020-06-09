@@ -1,12 +1,32 @@
 <?php
-  //include "services/pietanza.php";
+  include "services/pietanza.php";
   session_start();
 
-  //$array = getPietanze();
+  if(isset($_SESSION["carrello"])){
+
+    }
 
 
+  function getCarrello(){
+    $carrello=[];
+    $carrello = explode(" , ","a , b , c , d , Crabby Patty , Caffé , Cinese Abbrostolito Scemo Infame stupido , Cinese Abbrostolito Scemo Infame stupido , Cinese Abbrostolito Scemo Infame stupido , Acqua Naturale 1L , Pizza , Gelato , Pasta , Pizza , Pizza , Pasta");
+    $app=[];
+    $app = array_count_values($carrello);
+    $risult="";
+    $foto="";
 
+    foreach ($app as $pietanza => $numero) {
 
+      $a = getPietanza($pietanza);
+      $foto = $a != null ? $a -> getFoto() : " ";
+
+      $risult.= "<div class='carta'>
+                  <img class='img_carta' src='img/$foto'/>
+                  <p class='numero_carta'>x$numero</p>
+                </div>";
+      }
+    return $risult;
+  }
  ?>
 
 
@@ -20,45 +40,10 @@
    <body>
      <div class="contenitore">
        <div class="carte">
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
-
-         <div class='carta'>
-           <img class='img_carta' src='img/pizza.jpg'/>
-           <p class='numero_carta'>x1</p>
-         </div>
+         <?php echo getCarrello();?>
+       </div>
+       <div class="footer">
+         <p class="sommario">Il costo è di:</p>
        </div>
      </div>
    </body>

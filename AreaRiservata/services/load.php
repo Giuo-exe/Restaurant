@@ -1,6 +1,7 @@
 <?php
 include "connection.php";
 
+
 function loadPietanze(){
   $sql = "SELECT * FROM pietanze";
 
@@ -28,6 +29,7 @@ function loadPietanze(){
           //createPietanza($nome,$foto,$descrizione,$tempo);
           }
           echo $risult;
+          exit;
         }else{
           echo "<h1>Non c'è niente da mostrare</h1>";
         }
@@ -61,6 +63,7 @@ function loadPietanze(){
             //createPietanza($nome,$foto,$descrizione,$tempo);
             }
             echo $risult;
+            exit;
           }else{
             echo "<h1>Non c'è niente da mostrare</h1>";
           }

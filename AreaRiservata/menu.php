@@ -38,6 +38,7 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
         </form>
       </div>
     </nav>
@@ -57,7 +58,11 @@
         <?php echo loadPietanze(); ?>
       </div>
 
-      <div class="bottombar"><p id="ohfra"></p></div>
+      <div class="bottombar">
+        <p id="ohfra"></p>
+        <input type="submit" class="btn btn-success" name="cart" value="cart" id="carrello">Vai al carrello</input>
+        <button type="submit" class="btn btn-success" name="cart" value="cart" id="carrello" >Vai al carrello</button>
+      </div>
     </div>
 
 
@@ -67,24 +72,56 @@
 
 
     <script>
+
+
      $(function(){
         $('#vegan').click(function(){
           if ($(this).is(':checked')) {
             $('#result').html("");
             $('#ohfra').html("fram è si");
-            <?php echo setsessione("si"); ?>
+            <?php $_SESSION["vegano"] = "no";?>
 
             $('#result').html('<?php loadVegan(); ?>');
           }else{
             $('#result').html("");
             $('#ohfra').html("è no");
-            <?php echo setsessione("no"); ?>
+            <?php $_SESSION["vegano"] = "no";?>
 
             $('#result').html('<?php loadPietanze(); ?>');
           }
         });
       });
 
+
+
+      //vegano
+      /* $(function(){
+          $('#vegan').click(function(){
+            $('#result').html("");
+            var vegano;
+            if($(this).is(':checked')){
+              vegano = "si";
+            }else{
+              vegano = "no";
+            }
+
+            console.log(vegano);
+
+            $.ajax({
+                url:"services/load.php",
+                method:"post",
+                data:{search:vegano},
+                dataType:"text",
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+          });
+        });*/
+
+
+      //keyup
       $(document).ready(function(){
           $('#search_text').keyup(function(){
             var txt = $(this).val();
@@ -102,9 +139,31 @@
           });
       });
 
-        function addFood(nome){
-          document.getElementById("ohfra").innerHTML = nome;
-        }
+      //Load carrello
+      $(document).ready(function(){
+          $('#carrello').click(function(){
+              var clickBtnValue = $(this).val();
+              console.log(clickBtnValue);
+              var ajaxurl = 'cart.php',
+              data =  {'action': clickBtnValue};
+              $.post(ajaxurl, data, function (response) {
+                  $('.contenitore').html(response);
+                  alert("action performed successfully");
+              });
+          });
+      });
+
+      //add carrello
+      function addFood(nome){
+        document.getElementById("ohfra").innerHTML = nome;
+        
+        /*VAR AJAXURL = 'SERVICES/ADDCART.PHP',
+        DATA =  {'ACTION': NOME};
+        $.POST(AJAXURL, DATA, FUNCTION (RESPONSE) {
+            $('.CONTENITORE').HTML(RESPONSE);
+            ALERT("LA PIETANZA È STATA AGGIUNTA CON SUCCESSO");
+        });*/
+      }
 
       </script>
 
@@ -113,8 +172,17 @@
 
 <?php
 
-  function setsessione($cucu){
-      $_SESSION["vegano"] = $cucu;
+  function carrello(){
+    header("Location: cart.php");
   }
 
- ?>
+
+  function getNomePietanza($nome){
+    $Paolo = $nome;
+    echo "<script type='text/javascript'>
+     addFood(\"$nome\");
+     </script>"
+     ;
+     echo "vediamo se funziona";
+  }
+?>

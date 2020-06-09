@@ -7,8 +7,8 @@ echo $_SESSION["vegano"];
 $check = $_SESSION["vegano"];
 echo $check;
 if($check == "si"){
-  echo "fai qualcosa maremma puttana";
 }
+
 $sql = ($check == "si") ? "SELECT * FROM pietanze p WHERE p.vegano=1 and p.nome LIKE '%".$_POST["search"]."%'" : "SELECT * FROM pietanze p WHERE p.nome LIKE '%".$_POST["search"]."%'";
 
 echo $sql;
@@ -42,7 +42,7 @@ $conn=connect();
                               <i class='far fa-clock'></i>$tempo min</p>
                       </div>
                       <div class='operation_carta'>
-                        <i class='fas fa-plus-square' id='aggiungi' onclick='addFood(\"$nome\")'></i>
+                        <i class='fas fa-plus-square' id='aggiungi' onclick='addFood($nome)'></i>
                         <i class='fas fa-minus-square' id='rimuovi'></i>
                       </div>
                     </div>";
