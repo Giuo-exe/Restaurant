@@ -43,15 +43,6 @@
     </nav>
 
     <div class="container">
-      <div class="sfere" id="tavolo">
-        <div class='sfera'>
-          <p class='numero'>tavolo 1</p>
-        </div>"
-        <div class="contenuto">
-          <p class="pietanza"> <div class="sferina"></div></p>
-        </div>
-
-      </div>
       <?php echo createGraphics(); ?>
     </div>
   </body>

@@ -4,7 +4,10 @@ body{
 }
 
 .container{
-  margin: 0 auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-left : 0 auto;
+  margin-right : 0 auto;
   background-color: white;
   max-width: 1140px;
   min-width: 260px;
@@ -21,8 +24,8 @@ body{
   grid-area: carte;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(200px, 1fr);
-  grid-template-areas: "sfera contenuto";
+  grid-template-columns: repeat(200px, 1fr, 200px);
+  grid-template-areas: "sfera contenuto operation";
   gap: 20px;
 }
 
@@ -32,14 +35,17 @@ body{
     height: 196px;
     border-radius: 50%;
     border: 2px solid #000000;
-    background-color: red;
-    margin: 0 auto;
+    margin-right: 0;
     display: grid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .contenuto{
-  grid-area: contenuto; 
+  justify-content: flex-start;
+  margin-right: 0;
+  background-color:  green;
+  text-align: left;
+  grid-area: contenuto;
   width: 100%;
 }
 
@@ -49,7 +55,7 @@ body{
     width: 23px;
     height: 23px;
     border-radius: 50%;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
 }
 
 .numero{

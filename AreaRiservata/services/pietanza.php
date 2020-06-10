@@ -1,6 +1,6 @@
 <?php
 include "class_pietanza.php";
-include "connection.php";
+include "../connection.php";
 function getPietanza($pietanza){
   $sql = "SELECT * FROM pietanze p where p.nome='$pietanza'";
 

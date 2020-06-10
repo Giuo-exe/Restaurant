@@ -1,11 +1,10 @@
 <?php
 include "class_ordinazione.php";
-include "connection.php";
+include "../connection.php";
 
   function ordinazione($tavolo){
     $risult=array();
 
-    echo "<br>questo è il tavolo<br> $tavolo";
 
       $sql = "SELECT * FROM listaordinazioni p where p.tavolo='$tavolo'";
 
@@ -23,7 +22,6 @@ include "connection.php";
         }else{
           if($records){
             while($tupla=$records-> fetch_assoc()){
-              echo "<br>sto passando per il ciclo<br>";
               $nome = $tupla["nome"];
               $foto = $tupla["foto"];
               $descrizione = $tupla["descrizione"];
@@ -34,7 +32,7 @@ include "connection.php";
               $orario = $tupla["orario"];
 
               $oggetto = new ordinazione($nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario);
-              $risult=$oggetto;
+              $risult[]=$oggetto;
 
             }
             return $risult;
@@ -63,7 +61,7 @@ include "connection.php";
             if($records){
               while($tupla=$records-> fetch_assoc()){
                 $numero = $tupla["numero"];
-                $risult=$numero;
+                $risult[]=$numero;
               }
               return $risult;
             }else{
@@ -78,49 +76,58 @@ include "connection.php";
       $ris = "";
       $tavoli=array();
       $tavoli=tavoli();
+      $i=0;
 
 
 
       if(is_array($tavoli)){
         $ordinazioni=array();
         foreach ($tavoli as $tavolo) {
-          $ris.= "<div class='sfere' id='tavolo$tavolo'>
-                    <div class='sfera'>
-                      <p class='numero'>tavolo $tavolo</p>
+          $colorContenitore = randomColorPaletteContenitore($i%5);
+          $colorSfera = randomColorPaletteSphere();
+
+          $ris.= "<div class='sfere' id='tavolo$tavolo' style='background-color : #$colorContenitore'>
+                    <div class='sfera' style='background-color : #$colorSfera'>
+                      <p class='numero'>T. $tavolo</p>
                     </div>
                     <div class='contenuto'>";
 
           $ordinazioni = ordinazione($tavolo);
 
+          $ris.=" <p class='pietanza'>";
           foreach ($ordinazioni as $o) {
             $pietanza = $o -> getNome();
             $foto = $o -> getFoto();
 
 
-            $ris.=" <p class='pietanza'> <img class='sferina' src=''../img/$foto'> $pietanza</img></p>";
+             $ris.="<img class='sferina' src='../img/$foto'></img>$pietanza ";
+             //$ris.= $numero > 1 ? "x$numero " : "";
           }
-          $ris.="</div>
+          $ris.="</p></div>
               </div>";
-
+            $i++;
         }
         return $ris;
       }else if($tavoli!=null){
         $ordinazioni=array();
-        $ris.= "<div class='sfere' id='tavolo$tavoli'>
-                  <div class='sfera'>
-                    <p class='numero'>tavolo $tavoli</p>
+        $colorContenitore = randomColorPaletteContenitore($i);
+        $colorSfera = randomColorPaletteSphere();
+        $ris.= "<div class='sfere' id='tavolo$tavolo' style='background-color : #$colorContenitore'>
+                  <div class='sfera' style='background-color : #$colorSfera'>
+                    <p class='numero'>T. $tavoli</p>
                   </div>
                   <div class='contenuto'>";
 
         $ordinazioni = ordinazione($tavoli);
 
+        $ris.=" <p class='pietanza'>";
         foreach ($ordinazioni as $o) {
-          echo "entro";
           $pietanza = $o -> getNome();
           $foto = $o -> getFoto();
 
 
-          $ris.=" <p class='pietanza'> <img class='sferina' src=''../img/$foto'></img> $pietanza</p>";
+          $ris.="<img class='sferina' src='../img/$foto'></img>$pietanza ";
+          //$ris.= $numero > 1 ? "x$numero " : "";
         }
         $ris.="</div>
             </div>";
@@ -129,6 +136,22 @@ include "connection.php";
       $ris.="Nessun risultato";
     }
 
+    }
+
+
+
+    function randomColorPaletteSphere(){
+      $array = array("ffb5a7","fcd5ce","f8edeb","f9dcc4","fec89a");
+      $random = rand(0,(count($array)-1));
+      $colore="";
+      $colore = $array[$random];
+      return $colore;
+    }
+
+    function randomColorPaletteContenitore($indice){
+      $array = array("8e9aaf","cbc0d3","efd3d7","feeafa","dee2ff");
+      $colore = $array[$indice];
+      return $colore;
     }
 
     ?>
