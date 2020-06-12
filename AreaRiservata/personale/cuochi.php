@@ -17,10 +17,11 @@
       $nome = $cuoco -> getNome();
       $cognome = $cuoco -> getCognome();
       $foto = $cuoco -> getFoto();
+      echo $username;
 
       $ris.= "<div class='carta'>
                   <img class='img_carta' src='../img/dipendenti/$foto'/>
-                  <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
+                  <p class='Nome'>$nome $cognome <input type='checkbox' name='username[]' value='$username'></p>
 
                 </div>";
       }
@@ -105,7 +106,7 @@
     <center class="titolo">Scegli uno o più cuochi</center>
 
     <div class="contenitore">
-      <form method="POST" action="">
+      <form method="POST" action="assignment_handler.php">
         <div class="carte">
         <?php echo getCookers(); ?>
         </div>

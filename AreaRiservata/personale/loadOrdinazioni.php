@@ -6,7 +6,7 @@ include "../connection.php";
     $risult=array();
 
 
-      $sql = "SELECT * FROM listaordinazioni p where p.tavolo='$tavolo'";
+      $sql = "SELECT * FROM listaordinazioni p where p.tavolo='$tavolo' order by p.orario desc";
 
       $conn=connect();
         $records=$conn->query($sql);

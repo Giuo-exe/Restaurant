@@ -1,46 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="it" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <style>@import "css/login.css";</style>
+    <script>import "js/login.js";</script>
   </head>
   <body>
+    <div class="container" id="container">
+    	<div class="form-container sign-up-container">
+    		<form action="#">
+    			<h1>Create Account</h1>
+    			<span>or use your email for registration</span>
+    			<input type="text" placeholder="Name" />
+    			<input type="email" placeholder="Email" />
+    			<input type="password" placeholder="Password" />
+    			<button>Sign Up</button>
+    		</form>
+    	</div>
+    	<div class="form-container sign-in-container">
+    		<form action="#">
+    			<h1>Benvenuto</h1>
+          <form action="" method="POST">
+            <label for="tavoli"><span>Scegli un tavolo:</span></label>
+            <input list="tavoli" name="tavoli" id="tavoli">
+              <datalist id="tavolo">
 
-      <form action="index.html" class="login-form">
-        <h1>Login</h1>
+              </datalist>
+              <input type="submit">
+          </form>
+    			<span>Scegli un tavolo</span>
+    			<input type="email" placeholder="Email" />
+    			<input type="password" placeholder="Password" />
+    			<a href="#">Forgot your password?</a>
+    			<button>Sign In</button>
+    		</form>
+    	</div>
+    	<div class="overlay-container">
+    		<div class="overlay">
+    			<div class="overlay-panel overlay-left">
+    				<h1>Welcome Back!</h1>
+    				<p>To keep connected with us please login with your personal info</p>
+    				<button class="ghost" id="signIn">Sign In</button>
+    			</div>
+    			<div class="overlay-panel overlay-right">
+    				<h1>Sei del personale?</h1>
+    				<p>Inserisci i tuoi dati per usufruire della funzionalità del ristorante</p>
+    				<button class="ghost" id="signUp">Accedi</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
 
-        <div class="txtb">
-          <input type="text">
-          <span data-placeholder="Username"></span>
-        </div>
+    <footer>
+    	<p>
+    		Created with <i class="fa fa-heart"></i> by
+    		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+    		- Read how I created this and how you can join the challenge
+    		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+    	</p>
+    </footer>
 
-        <div class="txtb">
-          <input type="password">
-          <span data-placeholder="Password"></span>
-        </div>
+    <script>
+      const signUpButton = document.getElementById('signUp');
+      const signInButton = document.getElementById('signIn');
+      const container = document.getElementById('container');
 
-        <input type="submit" class="logbtn" value="Login">
-
-        <div class="bottom-text">
-          Don't have account? <a href="#">Sign up</a>
-        </div>
-
-      </form>
-
-      <script type="text/javascript">
-      $(".txtb input").on("focus",function(){
-        $(this).addClass("focus");
+      signUpButton.addEventListener('click', () => {
+      	container.classList.add("right-panel-active");
       });
 
-      $(".txtb input").on("blur",function(){
-        if($(this).val() == "")
-        $(this).removeClass("focus");
+      signInButton.addEventListener('click', () => {
+      	container.classList.remove("right-panel-active");
       });
-
-      </script>
-
+    </script>
 
   </body>
 </html>

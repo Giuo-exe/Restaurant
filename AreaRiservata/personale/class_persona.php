@@ -13,7 +13,7 @@ class persona{
   }
 
   function getUsername(){
-    return $this->nome;
+    return $this->username;
   }
 
   function getNome(){
