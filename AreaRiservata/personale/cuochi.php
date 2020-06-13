@@ -2,6 +2,15 @@
   include "../connection.php";
   include "class_persona.php";
 
+  function getTavolo(){
+    if(isset($_GET["tavolo"])){
+      $tavolo=$_GET["tavolo"];
+      return "?tavolo=$tavolo";
+    }else{
+      return "";
+    }
+  }
+
 
   function getCookers(){
     $cuochi=array();
@@ -106,7 +115,7 @@
     <center class="titolo">Scegli uno o più cuochi</center>
 
     <div class="contenitore">
-      <form method="POST" action="assignment_handler.php">
+      <form method="POST" action="assignment_handler.php<?php echo getTavolo(); ?>">
         <div class="carte">
         <?php echo getCookers(); ?>
         </div>

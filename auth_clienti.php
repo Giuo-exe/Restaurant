@@ -5,7 +5,7 @@ if (!empty($_POST["tavolo"]) & !empty($_POST["coperti"])) {
   $tavolo=$_POST["tavolo"];
   $coperti=$_POST["coperti"];
 
-  $sql="UPDATE tavolo t SET t.coperto=$coperti WHERE t.numero=$coperti";
+  $sql="UPDATE tavolo t SET t.coperti=$coperti WHERE t.numero=$coperti";
   $conn=connect();
 
   if ($conn->query($sql) === TRUE) {

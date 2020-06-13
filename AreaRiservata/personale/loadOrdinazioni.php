@@ -2,6 +2,7 @@
 include "class_ordinazione.php";
 include "../connection.php";
 
+
   function ordinazione($tavolo){
     $risult=array();
 
@@ -44,7 +45,7 @@ include "../connection.php";
     }
 
     function tavoli(){
-      $sql = "SELECT t.numero from tavolo t where t.numero in (select o.tavolo from ordinazione o)";
+      $sql = "SELECT t.numero from tavolo t where t.numero in (select l.tavolo from listaordinazioni l)";
 
       $conn=connect();
           $records=$conn->query($sql);
@@ -104,6 +105,10 @@ include "../connection.php";
              //$ris.= $numero > 1 ? "x$numero " : "";
           }
           $ris.="</p></div>
+          <div class=''>
+            <a href='cuochi.php?tavolo=$tavolo'><button class='btn btn-success'>Ciao</button></a>
+          </div>
+
               </div>";
             $i++;
         }

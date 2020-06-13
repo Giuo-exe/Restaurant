@@ -1,7 +1,10 @@
 <?php
 session_start();
+$tavolo=0;
 
-
+if(isset($_GET["tavolo"])){
+  $tavolo=$_GET["tavolo"];
+}
 
 if (!empty($_POST["username"])) {
 
@@ -43,10 +46,10 @@ if(isset($_SESSION["cuochitemporanei"])){
         }else{
           $listacuochisession.=$cuochi[$i];
         }
-
-        $app = ($i != 0) ? $i : "";
         echo "$i<br>";
-        $listacuochisession.= ($i!=$N-1 || $i != 0) ? "," : "";
+
+          $listacuochisession.= $i!=0 && $i!=$N-1 ? "," : "";
+
       }
       echo "$cuocoadesso adesso $listacuochisession<br>";
     }else{
@@ -54,9 +57,9 @@ if(isset($_SESSION["cuochitemporanei"])){
       echo "Se non un array $cuocoadesso<br>";
     }
     $_SESSION["cuochitemporanei"] = $listacuochisession;
-    //header("Location: assignment_pietanze.php?cuoco=$cuocoadesso");
+    header("Location: assignment_pietanze.php?cuoco=$cuocoadesso&tavolo=$tavolo");
   }else{
-    //header("Location: assignment.php");
+    header("Location: assignment.php");
   }
 }
  ?>

@@ -6,12 +6,10 @@
     $user=$_POST["username"];
     $pass=md5($_POST["password"]);
     echo $user.$pass;
-      echo "almeno qua ci arrivo";
       EstraiDati($user,$pass);
   }else if(isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     $user=$_COOKIE["username"];
     $pass=($_COOKIE["password"]);
-    echo "son qui";
 
       EstraiDati($user,$pass);
   }
@@ -64,7 +62,7 @@
       echo "<br> ecconi sono proprio io";
       echo "$t";
       if($t==="'chef'"){
-        header("Location: AreaRiservata\personale\assignment.php");
+        header("Location: AreaRiservata\personale/assignment.php");
 
       }else if($t==="'cuoco'"){
         echo "ollare ollare";
@@ -181,7 +179,7 @@
             $f=$tupla['foto'];
 
     			}
-          return "$u,$p,$user,$pass,$n,$c,$f.'chef'";
+          return "$u,$p,$user,$pass,$n,$c,$f,'chef'";
     		}
   }
 ?>
