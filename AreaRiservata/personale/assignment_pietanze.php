@@ -11,30 +11,38 @@ $tavolo=0;
 if(isset($_GET["cuoco"]) && isset($_GET["tavolo"]) ){
   $cuoco=$_GET["cuoco"];
   $tavolo=$_GET["tavolo"];
+  echo $tavolo;
 }
 
 $cuoco=getInformationCooker($cuoco);
-$nome = $cuoco -> getNome();
+$nomecuoco = $cuoco -> getNome();
 $cognome= $cuoco -> getCognome();
+$usercuoco = $cuoco -> getUsername();
 
 
 
+function getAlimenti($tavolo,$usercuoco){
 
-function getAlimenti($tavolo){
-  echo $tavolo;
   $pietanze=ordinazione($tavolo);
+  echo "$tavolo";
 
-  var_dump($pietanze);
 
   $ris="";
+
   if($pietanze!=null){
+    $idordine = is_array($pietanze) ? $pietanze[0] -> getId() : $pietanze -> getId();
+    echo $usercuoco;
+    $ris.="<form method='POST' action='assignment_add.php?tavolo=$tavolo&cuoco=$usercuoco&idordine=$idordine'>
+      <div class='carte'>";
     if(is_array($pietanze)){
       foreach ($pietanze as $pietanza) {
         $nome=$pietanza -> getNome();
         $foto=$pietanza -> getFoto();
+
+        echo $nome;
         $ris.="<div class='carta'>
             <img class='img_carta' src='../img/$foto'/>
-            <p class='Nome'>$nome <input type='checkbox' name='pietanze[]' value=$nome></p>
+            <p class='Nome'>$nome <input type='checkbox' name='pietanze[]' value='$nome'></p>
           </div>";
         }
       }else{
@@ -42,11 +50,18 @@ function getAlimenti($tavolo){
         $foto=$pietanze -> getFoto();
         $ris.="<div class='carta'>
             <img class='img_carta' src='../img/$foto'/>
-            <p class='Nome'>$nome <input type='checkbox' name='pietanze[]' value=$nome></p>
+            <p class='Nome'>$nome <input type='checkbox' name='pietanze[]' value='$nome'></p>
           </div>";
       }
+      $ris.="</div>
+      <div class='footer'>
+        <input type='submit' class='btn btn-success' name='Conferma' value='Conferma' id='check'></input>
+      </div>
+    </form>";
   }else{
     $ris.="Nessuna pietanza";
+
+    header("redirect:3 url=assignment.php");
   }
 
   return $ris;
@@ -72,6 +87,7 @@ function ordinazione($tavolo){
       }else{
         if($records){
           while($tupla=$records-> fetch_assoc()){
+            $id = $tupla["ordinazione"];
             $nome = $tupla["nome"];
             $foto = $tupla["foto"];
             $descrizione = $tupla["descrizione"];
@@ -81,7 +97,7 @@ function ordinazione($tavolo){
             $tavolo = $tupla["prezzo"];
             $orario = $tupla["orario"];
 
-            $oggetto = new ordinazione($nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario);
+            $oggetto = new ordinazione($id,$nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario);
             $risult[]=$oggetto;
 
           }
@@ -140,17 +156,9 @@ function getInformationCooker($cuoco){
 
 </head>
   <body>
-    <?php echo getAlimenti($tavolo); ?>
-    <center>Che piatto vuoi far cucinare a <?php echo "$nome $cognome";?>?</center>
+    <center class="titolo">Che piatto vuoi far cucinare a <?php echo "$nomecuoco $cognome";?>?</center>
     <div class="contenitore">
-      <form method="POST" action="">
-        <div class="carte">
-
-        </div>
-        <div class="footer">
-          <input type="submit" class="btn btn-success" name="Conferma" value="Conferma" id="check"></input>
-        </div>
-      </form>
+      <?php echo getAlimenti($tavolo,$usercuoco); ?>
     </div>
   </body>
 </html>

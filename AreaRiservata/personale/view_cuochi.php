@@ -1,3 +1,6 @@
+<?php session_start();
+include "loadAssegnamenti.php"; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,91 +43,7 @@
     <center class="titolo">Ordinazioni</center>
 
     <div class="contenitore">
-      <div class="tavolo">
-        <form method="POST" action="">
-          <center class="numero_tavolo">Tavolo 1</center>
-          <div class="carte">
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-          </div>
-          <div class="footer">
-            <input type="submit" class="btn btn-success" name="Conferma" value="Conferma" id="check"></input>
-          </div>
-        </form>
-      </div>
-
-      <div class="tavolo">
-        <form method="POST" action="">
-          <center class="numero_tavolo">Tavolo 1</center>
-          <div class="carte">
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-            <div class='carta'>
-              <img class='img_carta' src='../img/$foto'/>
-              <p class='Nome'>$nome $cognome <input type='checkbox' name='$username' value='$username'></p>
-            </div>
-          </div>
-          <div class="footer">
-            <input type="submit" class="btn btn-success" name="Conferma" value="Conferma" id="check"></input>
-          </div>
-        </form>
-      </div>
+      <?php echo createGraphics(); ?>
     </div>
   </body>
 </html>

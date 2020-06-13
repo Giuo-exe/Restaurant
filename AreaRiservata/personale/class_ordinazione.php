@@ -1,5 +1,6 @@
 <?php
   class ordinazione{
+    private $id=null;
     private $nome="";
     private $descrizione="";
     private $tempo="";
@@ -9,7 +10,8 @@
     private $tavolo=null;
     private $orario=null;
 
-    function __construct($nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario){
+    function __construct($id,$nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario){
+       $this->id = $id;
        $this->nome = $nome;
        $this->descrizione = $descrizione;
        $this->tempo = $tempo;
@@ -18,6 +20,10 @@
        $this->prezzo = $prezzo;
        $this->tavolo = $tavolo;
        $this->orario = $orario;
+    }
+
+    function getId(){
+      return $this->id;
     }
 
     function getNome(){

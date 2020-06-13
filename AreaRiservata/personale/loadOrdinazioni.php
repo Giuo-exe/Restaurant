@@ -32,7 +32,7 @@ include "../connection.php";
               $tavolo = $tupla["prezzo"];
               $orario = $tupla["orario"];
 
-              $oggetto = new ordinazione($nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario);
+              $oggetto = new ordinazione(null,$nome,$descrizione,$tempo,$foto,$vegano,$prezzo,$tavolo,$orario);
               $risult[]=$oggetto;
 
             }
