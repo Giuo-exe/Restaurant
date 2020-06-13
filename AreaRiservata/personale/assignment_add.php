@@ -8,6 +8,7 @@ if(isset($_SESSION["username"])){
 }
 
 if(isset($_POST["pietanze"]) && !empty($_GET["idordine"]) && !empty($_GET["cuoco"]) && isset($_SESSION["username"])) {
+    echo "s";
   $chef=$_SESSION["username"];
   $pietanze=$_POST["pietanze"];
   $cuoco=$_GET["cuoco"];
@@ -20,13 +21,28 @@ if(isset($_POST["pietanze"]) && !empty($_GET["idordine"]) && !empty($_GET["cuoco
   $data = date("Y-m-d H:m:s");
   echo $data;
 
+  var_dump($pietanze);
+
   if(is_array($pietanze)){
+    echo "entro";
       $mysqli = connect();
       $mysqli -> autocommit(FALSE);
-      echo "arrivo qui";
-      $sqls="INSERT INTO `assegnamentoordine` (`id`, `chef`, `cuoco`, `orario`, `ordinazione`) VALUES (NULL, '$chef', '$cuoco', '$data', '$idordine')";
 
-      $mysqli -> query($sqls);
+      $sqls="SELECT a.cuoco,a.ordinazione FROM assegnamentoordine a where a.cuoco = '$cuoco' and a.ordinazione='$idordine'";
+      $sqlss="";
+      $records = $mysqli->query($sqls);
+
+      if ( $records == TRUE) {
+      } else {
+        die("Errore nella query: " . $conn->error);
+      }
+      //gestisco gli eventuali dati estratti dalla query
+      if($records->num_rows == 0){
+          echo "sono settato";
+          $sqlss="INSERT INTO `assegnamentoordine` (`id`, `chef`, `cuoco`, `orario`, `ordinazione`) VALUES (NULL, '$chef', '$cuoco', '$data', '$idordine')";
+          echo $sqlss;
+          $mysqli -> query($sqlss);
+      }
 
       foreach ($pietanze as $pietanza) {
         $sql="UPDATE relativa r SET r.cuoco='$cuoco' WHERE r.pietanza='$pietanza' AND r.ordinazione='$idordine'";
@@ -49,9 +65,22 @@ if(isset($_POST["pietanze"]) && !empty($_GET["idordine"]) && !empty($_GET["cuoco
     $mysqli -> autocommit(FALSE);
 
 
-    $sqls="INSERT INTO `assegnamentoordine` (`id`, `chef`, `cuoco`, `orario`, `ordinazione`) VALUES (NULL, '$chef', '$cuoco', '$data', '$idordine')";
+    $sqls="SELECT a.cuoco,a.ordinazione FROM assegnamentoordine a where a.cuoco = '$cuoco' and a.ordinazione='$idordine'";
+    $sqlss="";
+    $records = $mysqli->query($sqls);
 
-    $mysqli -> query($sqls);
+    if ( $records == TRUE) {
+    } else {
+      die("Errore nella query: " . $conn->error);
+    }
+    //gestisco gli eventuali dati estratti dalla query
+    if($records->num_rows == 0){
+      echo "entroqui";
+        $sqlss="INSERT INTO `assegnamentoordine` (`id`, `chef`, `cuoco`, `orario`, `ordinazione`) VALUES (NULL, '$chef', '$cuoco', '$data', '$idordine')";
+        $mysqli -> query($sqlss);
+    }
+
+
 
     $sql="UPDATE relativa r SET r.cuoco='$cuoco' WHERE r.pietanza='$pietanze' AND r.ordinazione='$idordine'";
 

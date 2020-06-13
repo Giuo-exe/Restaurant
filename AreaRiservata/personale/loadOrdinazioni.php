@@ -106,7 +106,7 @@ include "../connection.php";
           }
           $ris.="</p></div>
           <div class=''>
-            <a href='cuochi.php?tavolo=$tavolo'><button class='btn btn-success'>Ciao</button></a>
+            <a href='cuochi.php?tavolo=$tavolo'><button class='btn btn-success'>Assegna</button></a>
           </div>
 
               </div>";

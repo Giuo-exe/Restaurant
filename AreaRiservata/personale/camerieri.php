@@ -1,15 +1,34 @@
-<?php  ?>
+
 <?php session_start();
   include "../connection.php";
   include "class_persona.php";
 
   function getTavolo(){
-    if(isset($_GET["tavolo"])){
+    if(isset($_GET["tavolo"]) && isset($_GET["idass"]) && isset($_GET["idord"])){
       $tavolo=$_GET["tavolo"];
-      return "?tavolo=$tavolo";
+      $id_assegnamento=$_GET["idass"];
+      $id_ord=($_GET["idord"]);
+      return "?tavolo=$tavolo&idass=$id_assegnamento&idord=$id_ord";
     }else{
       return "";
     }
+  }
+
+  if (!empty($_POST["pietanze"])) {
+
+    $pietanze=$_POST["pietanze"];
+    $listapietanzesessione="";
+    if(is_array($pietanze)){
+      $N=count($pietanze);
+      for($i=0;$i<$N;$i++){
+        $listapietanzesessione.=$pietanze[$i];
+
+        $listapietanzesessione.= $i!=$N-1 ? "," : "";
+      }
+    }else{
+      $listapietanzesessione.=$pietanze;
+    }
+    $_SESSION["pietanzetemporanee"] = $listapietanzesessione;
   }
 
 
@@ -27,11 +46,10 @@
       $nome = $cameriere -> getNome();
       $cognome = $cameriere -> getCognome();
       $foto = $cameriere -> getFoto();
-      echo $username;
 
       $ris.= "<div class='carta'>
                   <img class='img_carta' src='../img/dipendenti/$foto'/>
-                  <p class='Nome'>$nome $cognome <input type='radio' name='username' value='$username'></p>
+                  <p class='Nome'>$nome $cognome <input type='radio' name='cameriere' value='$username'></p>
 
                 </div>";
       }
@@ -113,10 +131,10 @@
         </form>
       </div>
     </nav>
-    <center class="titolo">Scegli uno o più cuochi</center>
+    <center class="titolo">Scegli un Cameriere</center>
 
     <div class="contenitore">
-      <form method="POST" action="assignment_handler.php<?php echo getTavolo(); ?>">
+      <form method="POST" action="consegna_handler.php<?php echo getTavolo(); ?>">
         <div class="carte">
         <?php echo getCookers(); ?>
         </div>

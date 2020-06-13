@@ -10,7 +10,7 @@ function assegnamento(){
   $username=$_SESSION["username"];
 
 
-    $sql = "SELECT * FROM listaassegnamenti p where p.cuoco='$username' order by p.orario desc";
+    $sql = "SELECT * FROM listaconsegne p where p.cameriere='$username' order by p.orario desc";
 
     $conn=connect();
       $records=$conn->query($sql);

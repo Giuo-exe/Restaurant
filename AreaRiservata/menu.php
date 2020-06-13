@@ -26,20 +26,8 @@
         <a class="navbar-brand" href="#">Ristorante</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="menu.php">Menu <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="menu.php">Menù</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-        </form>
       </div>
     </nav>
 
@@ -92,36 +80,6 @@
         });
       });
 
-
-
-      //vegano
-      /* $(function(){
-          $('#vegan').click(function(){
-            $('#result').html("");
-            var vegano;
-            if($(this).is(':checked')){
-              vegano = "si";
-            }else{
-              vegano = "no";
-            }
-
-            console.log(vegano);
-
-            $.ajax({
-                url:"services/load.php",
-                method:"post",
-                data:{search:vegano},
-                dataType:"text",
-                success:function(data)
-                {
-                    $('#result').html(data);
-                }
-            });
-          });
-        });*/
-
-
-      //keyup
       $(document).ready(function(){
           $('#search_text').keyup(function(){
             var txt = $(this).val();
@@ -139,30 +97,11 @@
           });
       });
 
-      //Load carrello
-      $(document).ready(function(){
-          $('#carrello').click(function(){
-              var clickBtnValue = $(this).val();
-              console.log(clickBtnValue);
-              var ajaxurl = 'cart.php',
-              data =  {'action': clickBtnValue};
-              $.post(ajaxurl, data, function (response) {
-                  $('.contenitore').html(response);
-                  alert("action performed successfully");
-              });
-          });
-      });
+      
 
       //add carrello
       function addFood(nome){
         document.getElementById("ohfra").innerHTML = nome;
-        
-        /*VAR AJAXURL = 'SERVICES/ADDCART.PHP',
-        DATA =  {'ACTION': NOME};
-        $.POST(AJAXURL, DATA, FUNCTION (RESPONSE) {
-            $('.CONTENITORE').HTML(RESPONSE);
-            ALERT("LA PIETANZA È STATA AGGIUNTA CON SUCCESSO");
-        });*/
       }
 
       </script>

@@ -11,7 +11,6 @@ $tavolo=0;
 if(isset($_GET["cuoco"]) && isset($_GET["tavolo"]) ){
   $cuoco=$_GET["cuoco"];
   $tavolo=$_GET["tavolo"];
-  echo $tavolo;
 }
 
 $cuoco=getInformationCooker($cuoco);
@@ -24,22 +23,18 @@ $usercuoco = $cuoco -> getUsername();
 function getAlimenti($tavolo,$usercuoco){
 
   $pietanze=ordinazione($tavolo);
-  echo "$tavolo";
 
 
   $ris="";
 
   if($pietanze!=null){
     $idordine = is_array($pietanze) ? $pietanze[0] -> getId() : $pietanze -> getId();
-    echo $usercuoco;
     $ris.="<form method='POST' action='assignment_add.php?tavolo=$tavolo&cuoco=$usercuoco&idordine=$idordine'>
       <div class='carte'>";
     if(is_array($pietanze)){
       foreach ($pietanze as $pietanza) {
         $nome=$pietanza -> getNome();
         $foto=$pietanza -> getFoto();
-
-        echo $nome;
         $ris.="<div class='carta'>
             <img class='img_carta' src='../img/$foto'/>
             <p class='Nome'>$nome <input type='checkbox' name='pietanze[]' value='$nome'></p>

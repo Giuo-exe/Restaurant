@@ -5,7 +5,6 @@
   if (!empty($_POST["username"]) & !empty($_POST["password"])) {
     $user=$_POST["username"];
     $pass=md5($_POST["password"]);
-    echo $user.$pass;
       EstraiDati($user,$pass);
   }else if(isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     $user=$_COOKIE["username"];
@@ -59,7 +58,6 @@
       settacookie($user,$pass);
       createToken($user,$pass);
       settasessione($u,$n,$c,$f,$t);
-      echo "<br> ecconi sono proprio io";
       echo "$t";
       if($t==="'chef'"){
         header("Location: AreaRiservata\personale/assignment.php");
@@ -149,7 +147,7 @@
   			while($tupla=$records-> fetch_assoc()){
   				$u=$tupla['username'];
   				$p=$tupla['password'];
-          $n=$tupla['nome'];
+          $n=$tupla['nome'];+
           $c=$tupla['cognome'];
           $f=$tupla['foto'];
 

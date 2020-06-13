@@ -42,7 +42,7 @@ $conn=connect();
                               <i class='far fa-clock'></i>$tempo min</p>
                       </div>
                       <div class='operation_carta'>
-                        <i class='fas fa-plus-square' id='aggiungi' onclick='addFood($nome)'></i>
+                        <i class='fas fa-plus-square' id='aggiungi' onclick=''></i>
                         <i class='fas fa-minus-square' id='rimuovi'></i>
                       </div>
                     </div>";

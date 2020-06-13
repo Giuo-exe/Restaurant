@@ -1,6 +1,6 @@
 <?php include "AreaRiservata/connection.php";
 
-  $login=""
+  $login="";
 ?>
 
 
@@ -17,8 +17,8 @@
     		<form action="auth.php" method="POST">
     			<h1>Accedi</h1>
     			<span>Inserisci i tuoi dati</span>
-    			<input type="text" placeholder="Username" name="username" value="benitomussolini"/>
-    			<input type="password" placeholder="Password" name="password" value="vivailduce" />
+    			<input type="text" placeholder="Username" name="username" value=""/>
+    			<input type="password" placeholder="Password" name="password" value="" />
     			<input type="submit" value="Log in " id="button">
     		</form>
     	</div>

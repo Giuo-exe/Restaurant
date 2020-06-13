@@ -5,7 +5,7 @@ include "loadAssegnamenti.php"; ?>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ordinazioni</title>
+    <title>Consegne</title>
     <style>@import "../css/view_cuochi.css";</style>
     <script src="https://kit.fontawesome.com/84d53604d4.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>

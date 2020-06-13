@@ -1,7 +1,7 @@
 <?php
 class assegnamento{
-  private $id_ordinazione=null;
-  private $id_assegnamento=null;
+  private $id_ordinazione=0;
+  private $id_assegnamento=0;
   private $chef="";
   private $cuoco="";
   private $tavolo=null;
@@ -11,10 +11,10 @@ class assegnamento{
   private $prezzo=null;
 
   function __construct($id_ordinazione,$id_assegnamento,$chef,$cuoco,$tavolo,$orario,$nome,$foto,$prezzo){
-     $this->$id_ordinazione = $id_ordinazione;
-     $this->$id_assegnamento = $id_assegnamento;
-     $this->$chef = $chef;
-     $this->$cuoco = $cuoco;
+     $this->id_ordinazione = $id_ordinazione;
+     $this->id_assegnamento = $id_assegnamento;
+     $this->chef = $chef;
+     $this->cuoco = $cuoco;
      $this->tavolo = $tavolo;
      $this->orario = $orario;
      $this->nome = $nome;
@@ -27,7 +27,7 @@ class assegnamento{
   }
 
   function getId_assegnamento(){
-    return $this->id_ordinazione;
+    return $this->id_assegnamento;
   }
 
   function getChef(){

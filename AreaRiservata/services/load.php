@@ -24,7 +24,7 @@ function loadPietanze(){
             $descrizione = $tupla["descrizione"];
             $tempo = $tupla["tempo"];
 
-            $risult.= "<div class=\"carta\"><img class=\"img_carta\" src=\"img/$foto\"/><div class=\"informazione_carta\"><h1 class=\"titolo_carta\">$nome</h1><p class=\"testo_carta\">$descrizione</p><p class=\"tempo_carta\"><i class=\"far fa-clock\"></i>$tempo min</p></div><div class=\"operation_carta\"><i class=\"fas fa-plus-square\" id=\"aggiungi\" onclick=\"addFood(\"$nome\")\"></i><i class=\"fas fa-minus-square\" id=\"rimuovi\"></i></div></div>";
+            $risult.= "<div class=\"carta\"><img class=\"img_carta\" src=\"img/$foto\"/><div class=\"informazione_carta\"><h1 class=\"titolo_carta\">$nome</h1><p class=\"testo_carta\">$descrizione</p><p class=\"tempo_carta\"><i class=\"far fa-clock\"></i>$tempo min</p></div><div class=\"operation_carta\"><i class=\"fas fa-plus-square\" id=\"aggiungi\" onclick=\"\"></i><i class=\"fas fa-minus-square\" id=\"rimuovi\"></i></div></div>";
 
           //createPietanza($nome,$foto,$descrizione,$tempo);
           }
@@ -58,7 +58,7 @@ function loadPietanze(){
               $descrizione = $tupla["descrizione"];
               $tempo = $tupla["tempo"];
 
-              $risult.= "<div class=\"carta\"><img class=\"img_carta\" src=\"img/$foto\"/><div class=\"informazione_carta\"><h1 class=\"titolo_carta\">$nome</h1><p class=\"testo_carta\">$descrizione</p><p class=\"tempo_carta\"><i class=\"far fa-clock\"></i>$tempo min</p></div><div class=\"operation_carta\"><i class=\"fas fa-plus-square\" id=\"aggiungi\" onclick=\"addFood(\"$nome\")\"></i><i class=\"fas fa-minus-square\" id=\"rimuovi\"></i></div></div>";
+              $risult.= "<div class=\"carta\"><img class=\"img_carta\" src=\"img/$foto\"/><div class=\"informazione_carta\"><h1 class=\"titolo_carta\">$nome</h1><p class=\"testo_carta\">$descrizione</p><p class=\"tempo_carta\"><i class=\"far fa-clock\"></i>$tempo min</p></div><div class=\"operation_carta\"><i class=\"fas fa-plus-square\" id=\"aggiungi\" onclick=\"\"></i><i class=\"fas fa-minus-square\" id=\"rimuovi\"></i></div></div>";
 
             //createPietanza($nome,$foto,$descrizione,$tempo);
             }

@@ -26,7 +26,6 @@
       $nome = $cuoco -> getNome();
       $cognome = $cuoco -> getCognome();
       $foto = $cuoco -> getFoto();
-      echo $username;
 
       $ris.= "<div class='carta'>
                   <img class='img_carta' src='../img/dipendenti/$foto'/>
